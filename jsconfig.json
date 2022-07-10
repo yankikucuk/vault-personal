@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "exclude": ["/dist", "dist_electron", "node_modules"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "jsx": "preserve"
+  }
+}

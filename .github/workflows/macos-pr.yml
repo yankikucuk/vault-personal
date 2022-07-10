@@ -1,0 +1,41 @@
+name: macOS Build
+on: pull_request
+
+jobs:
+  build:
+    runs-on: macos-12
+
+    strategy:
+      matrix:
+        node: ["16"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm install --legacy-peer-deps
+      - run: npm i -D dmg-license
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Rebuild
+        run: npm rebuild node-sass
+
+      - name: Build
+        run: npm run build
+
+      - uses: actions/upload-artifact@v3
+        name: Upload DMG
+        with:
+          name: Vault-Personal-PRCI-dmg
+          path: dist_electron/*-mac-universal.dmg
+
+      - uses: actions/upload-artifact@v3
+        name: Upload ZIP
+        with:
+          name: Vault-Personal-PRCI-zip
+          path: dist_electron/*-mac-universal.zip

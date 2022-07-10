@@ -1,0 +1,31 @@
+name: Windows Build
+on: pull_request
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        node: ["16"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm install --legacy-peer-deps
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - uses: actions/upload-artifact@v3
+        name: Upload Installer
+        with:
+          name: Vault-Personal-PRCI-Installer
+          path: dist_electron/*.exe
