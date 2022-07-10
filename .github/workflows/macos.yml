@@ -26,9 +26,6 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Rebuild
-        run: npm rebuild node-sass
-
       - name: Sharp Multiarch Rebuild
         run: npm install --platform=darwin --arch=x64 sharp && npm rebuild --platform=darwin --arch=arm64 sharp
 
