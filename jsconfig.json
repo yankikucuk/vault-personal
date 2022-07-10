@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "exclude": ["/dist", "dist_electron", "node_modules"],
     "target": "ESNext",
     "module": "ESNext",
     "baseUrl": "./",
