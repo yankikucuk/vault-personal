@@ -6,7 +6,8 @@
   "scripts": {
     "build": "vue-cli-service electron:build --publish never",
     "dev": "vue-cli-service electron:serve",
-    "lint": "eslint src/. --ext .js,.vue && npm run lint:scss",
+    "lint": "eslint src/. --ext .js,.vue && npm run lint:less",
+    "lint:less": "prettier --check src/. && prettier --write src/.",
     "dist": "vue-cli-service electron:build --publish onTagOrDraft",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
