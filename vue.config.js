@@ -10,7 +10,7 @@ module.exports = {
         appId: "playerberry.vault.personal",
         asar: false,
         win: {
-          icon: "public/logo.ico",
+          icon: "public/icon.ico",
           publish: {
             provider: "github",
           },
