@@ -1,12 +1,16 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Main from "../views/MainView.vue";
+import {
+  createRouter,
+  createWebHistory,
+  createWebHashHistory,
+} from "vue-router";
+import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
 
 const routes = [
   {
     path: "/",
-    name: "main",
-    component: Main,
+    name: "home",
+    component: HomeView,
   },
   {
     path: "/about",
@@ -16,7 +20,9 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: process.env.IS_ELECTRON
+    ? createWebHashHistory()
+    : createWebHistory(process.env.BASE_URL),
   routes,
 });
 

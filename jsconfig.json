@@ -3,13 +3,11 @@
     "target": "ESNext",
     "module": "ESNext",
     "baseUrl": "./",
-    "resolveJsonModule": true,
-    "allowJs": true,
+    "jsx": "preserve",
     "moduleResolution": "node",
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
-    "jsx": "preserve"
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   }
 }

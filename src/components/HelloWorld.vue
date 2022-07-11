@@ -1,12 +1,12 @@
 <script>
 export default {
-  name: "LandingPage",
+  name: "HelloWorld",
 };
 </script>
 
 <template>
   <div>
-    <h1>Test</h1>
+    <h1>Vault: Personal</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
