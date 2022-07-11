@@ -1,7 +1,10 @@
 module.exports = {
+  productionSourceMap: false,
   pluginOptions: {
     electronBuilder: {
       customFileProtocol: "./",
+      nodeIntegration: true,
+      experimentalNativeDepCheck: true,
       builderOptions: {
         productName: "Vault: Personal",
         appId: "playerberry.vault.personal",
@@ -16,9 +19,6 @@ module.exports = {
           deleteAppDataOnUninstall: true,
         },
       },
-      nodeIntegration: true,
-      experimentalNativeDepCheck: true,
     },
   },
-  productionSourceMap: false,
 };
