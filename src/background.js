@@ -37,7 +37,7 @@ autoUpdater.allowPrerelease = false;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 log.info("App starting...");
-
+/* eslint-disable no-undef */
 const iconpath = path.join(
   __static,
   `icon${process.platform === "win32" ? ".ico" : "-light.png"}`
@@ -287,6 +287,7 @@ autoUpdater.on("download-progress", (progressObj) => {
 
 let installNagAlreadyShowed = false;
 
+/* eslint-disable no-unused-vars */
 autoUpdater.on("update-downloaded", (info) => {
   if (!installNagAlreadyShowed) {
     if (win && win.webContents) {
