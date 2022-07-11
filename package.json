@@ -36,7 +36,6 @@
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
     "prettier": "^2.4.1",
-    "regedit": "^5.1.1",
     "vue-cli-plugin-electron-builder": "^2.1.1"
   },
   "overrides": {
