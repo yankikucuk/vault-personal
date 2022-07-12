@@ -286,6 +286,18 @@ autoUpdater.on("update-downloaded", (info) => {
       win.webContents.send("updaterHandler", "update-downloaded");
       win.setProgressBar(-1);
     }
+
+    if (autoUpdater.autoDownload === true) {
+      autoUpdater.quitAndInstall();
+    } else {
+      new Notification({
+        title: "Yeni Güncelleme Yüklenmeye Hazır!",
+        body: `Vault: Personal ${info.version} otomatik olarak indirildi. Uygulamayı kapattığınızda güncellenecek.`,
+        icon: path.join(__static, process.platform === "win32" ? "bigicon.png" : "icon.png"),
+      }).show();
+      // show install nag only once
+      installNagAlreadyShowed = true;
+    }
   }
 });
 

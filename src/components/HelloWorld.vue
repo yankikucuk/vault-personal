@@ -54,15 +54,15 @@ export default {
 <template>
   <div>
     <h1>Vault: Personal</h1>
-    <a :href="updater.path" v-if="updater.status === 'update-available'"
+    <!--<a :href="updater.path" v-if="updater.status === 'update-available'"
       >yeni güncellemeyi indir</a
-    >
+    >-->
     <br />
     <i v-if="updater.status === 'update-downloaded'" @click="installUpdates"
       >güncellemeyi yükle</i
     >
     <br />
-    <div v-if="updater.status === 'checking-for-update'">sync</div>
+    <div v-if="updater.status === 'checking-for-update'">Güncellemeler Kontrol Ediliyor...</div>
     <div v-if="updater.status === 'download-progress'">
       {{ updater.progress }}
     </div>
