@@ -29,7 +29,6 @@ if (isProduction) {
 let tray = Tray || null;
 let contextMenu = Menu || null;
 let win = BrowserWindow || null;
-let cancellationToken;
 
 autoUpdater.autoDownload = false;
 autoUpdater.allowDowngrade = false;
@@ -93,17 +92,13 @@ async function createWindow() {
     {
       label: "Güncellemeleri Kontrol Et",
       click: () => {
-        if (cancellationToken) {
-          cancellationToken.cancel();
-        }
-
         autoUpdater.checkForUpdates().then((UpdateCheckResult) => {
           win.webContents.send(
             "updaterHandler",
             "checkForUpdates",
             UpdateCheckResult
           );
-          ({ cancellationToken } = UpdateCheckResult);
+          UpdateCheckResult;
         });
       },
     },
@@ -223,9 +218,6 @@ ipcMain.handle("postFetchingNewUpdateNotification", (_event, news) => {
 });
 
 ipcMain.handle("checkUpdates", (_event, isBeta) => {
-  if (cancellationToken) {
-    cancellationToken.cancel();
-  }
   autoUpdater.allowPrerelease = isBeta;
 
   autoUpdater.checkForUpdates().then((UpdateCheckResult) => {
@@ -234,7 +226,7 @@ ipcMain.handle("checkUpdates", (_event, isBeta) => {
       "checkForUpdates",
       UpdateCheckResult
     );
-    ({ cancellationToken } = UpdateCheckResult);
+    UpdateCheckResult;
   });
 });
 
@@ -252,8 +244,8 @@ autoUpdater.on("update-available", (info) => {
 
   if (!installNagAlreadyShowed) {
     new Notification({
-      title: "A new update is available",
-      body: `WeakAuras Companion ${info.version} is available for download.`,
+      title: "Yeni Bir Güncelleme Mevcut",
+      body: `Vault: Personal ${info.version} sürümü indirilebilir durumda.`,
       icon: path.join(
         __static,
         process.platform === "win32" ? "bigicon.png" : "icon.png"
