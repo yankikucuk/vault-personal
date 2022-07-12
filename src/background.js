@@ -30,7 +30,7 @@ let tray = Tray || null;
 let contextMenu = Menu || null;
 let win = BrowserWindow || null;
 
-autoUpdater.autoDownload = false;
+autoUpdater.autoDownload = true;
 autoUpdater.allowDowngrade = false;
 autoUpdater.allowPrerelease = false;
 autoUpdater.logger = log;
