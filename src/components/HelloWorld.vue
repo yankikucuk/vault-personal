@@ -26,7 +26,7 @@ export default {
       if (status === "download-progress") {
         this.updater.progress = Math.floor(arg.percent);
       }
-      if (status === "update-available") {
+        if (status === "update-downloaded") {
         this.updater.path = `https://github.com/yankikucuk/vault-personal/releases/download/v${arg.version}/${arg.path}`;
         this.updater.releaseNotes = arg.releaseNotes || "";
       }
@@ -54,12 +54,9 @@ export default {
 <template>
   <div>
     <h1>Vault: Personal</h1>
-    <!--<a :href="updater.path" v-if="updater.status === 'update-available'"
-      >yeni güncellemeyi indir</a
-    >-->
     <br />
     <i v-if="updater.status === 'update-downloaded'" @click="installUpdates"
-      >güncellemeyi yükle</i
+      >{{ updater.version }} güncellemeyi yükle</i
     >
     <br />
     <div v-if="updater.status === 'checking-for-update'">Güncellemeler Kontrol Ediliyor...</div>
